@@ -20,15 +20,16 @@
                     <th scope="col">Tanggal Dibuat</th>
                     <th scope="col">UserID</th>
                 </tr>
+                @foreach ($album as $data)
                 <tr>
-                    <th scope="row">1</th>
-                    <td>syifa</td>
-                    <td>aku</td>
-                    <td>yyy</td>
-                    <td>jisj</td>
-                  </tr>
-              
-            </table>
+                    <th>{{ $loop->iteration }}</th>
+                    <td>{{ $data->NamaAlbum }}</td>
+                    <td>{{ $data->Deskripsi }}</td>
+                    <td>{{ $data->TanggalDibuat }}</td>
+                    <td>{{ $data->UserID }}</td>
+                </tr>
+                  @endforeach
+                </table>
           </div>
         </div>
       </div>

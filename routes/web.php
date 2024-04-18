@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\FotoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/p', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('admin.admin');
@@ -28,7 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/about', function () {
+Route::get('/', function () {
     return view('about');
 });
 
@@ -53,13 +55,18 @@ Route::get('/tambahFoto', function () {
     return view('admin.tambahFoto');
 });
 
-Route::get('/albumAdmin', function () {
-    return view('admin.albumAdmin');
-});
 
-Route::get('/tambahAlbum', function () {
-    return view('admin.tambahAlbum');
-});
+Route::get('/dataFoto', [FotoController::class, 'index']);
+Route::get('/tambahFoto', [FotoController::class, 'create'])->name('tambahFoto');  
+Route::post('/tambahFoto', [FotoController::class, 'store'])->name('simpann');   
+Route::get('/editFoto/{id}', [FotoController::class, 'edit'])->name('editFoto');  
+Route::post('/editFoto/{id}', [FotoController::class, 'update'])->name('simpann'); 
+
+
+Route::get('/albumAdmin', [AlbumController::class, 'index'])->name('albumDashboard');
+Route::get('/tambahAlbum', [AlbumController::class, 'create']);  
+Route::post('/tambahAlbum', [AlbumController::class, 'store'])->name('simpan'); 
+
 require __DIR__.'/auth.php'; 
 
 

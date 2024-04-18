@@ -66,7 +66,7 @@
 <div style="background-color: #d2bd96;">
     <div style="display: flex; margin-left: 50px; padding: 50px;"> 
 
-     <div class="card" style="width: 20rem; text-align: center; border-radius: 15px;">
+     <div class="card" style="width: 20rem; text-align: center; border-radius: 15px;"> 
       <i class="fa-solid fa-martini-glass-citrus" style="font-size: 5rem; margin-top: 50px;"></i>
        <div class="card-body">
          <h5 class="card-title">BOBA & TEA</h5>
