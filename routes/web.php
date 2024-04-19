@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\FotoController;
+use App\Http\Controllers\GalerryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,9 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/', function () {
-    return view('about');
-});
+Route::get('/', [GalerryController::class, 'index']);
 
 Route::get('/photo-detail', function () {
     return view('photo-detail');
@@ -59,8 +58,6 @@ Route::get('/tambahFoto', function () {
 Route::get('/dataFoto', [FotoController::class, 'index']);
 Route::get('/tambahFoto', [FotoController::class, 'create'])->name('tambahFoto');  
 Route::post('/tambahFoto', [FotoController::class, 'store'])->name('simpann');   
-Route::get('/editFoto/{id}', [FotoController::class, 'edit'])->name('editFoto');  
-Route::post('/editFoto/{id}', [FotoController::class, 'update'])->name('simpann'); 
 
 
 Route::get('/albumAdmin', [AlbumController::class, 'index'])->name('albumDashboard');

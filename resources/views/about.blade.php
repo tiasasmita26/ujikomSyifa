@@ -22,8 +22,24 @@
                 </form>
             </div> --}}
         </div>
+
+        {{-- <div class="container-fluid pt-5 pb-3">
+            <div class="row">
+                <div class="col-12 text-center mb-2">
+                    @foreach
+                    <div></div>
+                    @endforeach
+                </div>
+            </div>
+        </div>  --}}
+
+
+
+
+
+        
         <div class="row tm-mb-90 tm-gallery">
-        	<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+        	{{-- <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
                     <img src="{{ ('assets/img/americanoCoffe.jpg') }}" alt="Image" class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
@@ -35,21 +51,34 @@
                     <span class="tm-text-gray-light">18 Oct 2020</span>
                     <span>9,906 views</span>
                 </div>
-            </div>
+            </div> --}}
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-                <figure class="effect-ming tm-video-item">
-                    <img src="{{ ('assets/img/strawberryCheesemilk.jpg') }}" alt="Image" class="img-fluid">
-                    <figcaption class="d-flex align-items-center justify-content-center">
-                        <h2>Strawberry Cheese Milk</h2>
-                        <a href="/photo-detail">View more</a>
-                    </figcaption>                    
-                </figure>
-                <div class="d-flex justify-content-between tm-text-gray">
+                @foreach ($photo as $photo)
+                    <div class="col-lg-4 mb-4">
+                        <div class="card border-0 shadow-sm mb-2"> 
+                            <img class="card-img-top mb-2" src="{{ asset('storage/' . $photo->LokasiFile) }}" alt="" style="width: 100%; ">
+                            <div class="card-body bg-light text-center p-4">
+                                <h4>{{ $photo->JudulFoto }}</h4>
+                                <div class="d-flex justify-content-center mb-3">
+                                    {{-- <small class="mr-3"><i class="fa fa-user text-primary">{{ $photo->user->full_name }}</i></small> --}}
+                                    {{-- <small class="mr-3"><i class="fa fa-folder text-primary">{{ $photo->user->album_name }}</i></small> --}}
+                                    <small class="mr-3"><i class="fa fa-comments text-primary">15</i></small>
+                                    <small id="like-icon-{{ $photo->FotoID }}" class="mr-3 like-icon" data-photo-id="{{ $photo->FotoID }}"><i class="fa fa-heart text-primary"></i></small>
+                                </div>
+                                <p>{{ $photo->DeskripsiFoto }}</p> 
+                                <a href="" class="btn btn-primary px-4 mx-auto my-2"> nkjhuyf</a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+
+
+                {{-- <div class="d-flex justify-content-between tm-text-gray">
                     <span class="tm-text-gray-light">14 Oct 2020</span>
                     <span>16,100 views</span>
-                </div>
+                </div> --}}
             </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+            {{-- <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
                     <img src="{{ ('assets/img/susuAren.jpg') }}" alt="Image" class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
@@ -179,8 +208,11 @@
                     <span class="tm-text-gray-light">28 Aug 2020</span>
                     <span>50,700 views</span>
                 </div>
-            </div>       
-        </div> <!-- row -->
+            </div>        --}}
+        </div> 
+
+
+        <!-- row -->
         {{-- <div class="row tm-mb-90">
             <div class="col-12 d-flex justify-content-between align-items-center tm-paging-col">
                 <a href="javascript:void(0);" class="btn btn-primary tm-btn-prev mb-2 disabled">Previous</a>

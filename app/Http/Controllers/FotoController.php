@@ -67,8 +67,8 @@ class FotoController extends Controller
 
         if ($request->hasFile('file_location')) {
             $files = $request->file('file_location');
-            $path = storage_path('app/public');
-            $files_name = 'public' . '/' . date('Ymd') . '-' .
+            // $path = storage_path('');
+            $files_name = 
             $files->getClientOriginalName();
             $files->storeAs('public', $files_name);
             $photo->file_location = $files_name;
