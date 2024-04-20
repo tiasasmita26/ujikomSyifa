@@ -7,7 +7,7 @@
                   <div class="card-header">
                     <h4>Form Tambah Data Foto</h4>
                   </div>
-                  <form action="{{ route('simpann') }}" method="post">
+                  <form action="{{ route('simpann') }}" method="post" enctype="multipart/form-data">
                   @csrf
                   <div class="card-body">
                     <div class="form-group row mb-4">
@@ -25,7 +25,7 @@
                     <div class="form-group row mb-4">
                       <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Lokasi File</label>
                       <div class="col-sm-12 col-md-7">
-                        <input type="file" class="form-control " name="LokasiFile" id="LokasiFile">
+                        <input type="file" class="form-control " name="LokasiFile" id="LokasiFile" required>
                       </div>
                     </div>
                     <div class="form-group row mb-4">

@@ -33,7 +33,7 @@ class FotoController extends Controller
         $user = User::all();
         $album = Album::get();
         $photo = Foto::all();
-        return view ('admin.tambahFoto', compact('album', 'user', 'photo'));
+        return view('admin.tambahFoto', compact('album', 'user', 'photo'));
     }
 
     /**
@@ -61,18 +61,22 @@ class FotoController extends Controller
         $photo->JudulFoto = $request->JudulFoto;
         $photo->DeskripsiFoto = $request->DeskripsiFoto;
         $photo->TanggalUnggah = $tanggal;
-        $photo->LokasiFile = $request->LokasiFile;
+        // $photo->LokasiFile = $request->LokasiFile;
         $photo->AlbumID = $request->AlbumID;
-        $photo->UserID = $request->UserID;
+        $photo['userId'] = auth()->user()->userId;
 
-        if ($request->hasFile('file_location')) {
-            $files = $request->file('file_location');
-            // $path = storage_path('');
-            $files_name = 
-            $files->getClientOriginalName();
-            $files->storeAs('public', $files_name);
-            $photo->file_location = $files_name;
-        }
+        // if ($request->hasFile('LokasiFile')) {
+        $files = $request->file('LokasiFile');
+        // $path = storage_path('');
+        $files_name = $photo['userId'] . '-' . now()->timestamp . '.' . $files->getClientOriginalExtension();
+        // dd($files_name);
+        // $files->getClientOriginalName();
+        $files->storeAs('public', $files_name);
+        // $photo->file_location = $files_name;
+        // dd($files_name);
+        $photo->LokasiFile = $files_name;
+
+        // }
         $photo->save();
 
         return redirect('dataFoto')->with('success', 'tambah data sukses!!');
@@ -101,8 +105,8 @@ class FotoController extends Controller
         // $foto = Foto::find($id);
         // return view('editFoto', ['foto' => $foto]);
 
-        $foto = Foto::where('FotoID',$id)->get();
-        return view('editFoto',['foto' => $foto]);
+        $foto = Foto::where('FotoID', $id)->get();
+        return view('editFoto', ['foto' => $foto]);
     }
 
     /**
