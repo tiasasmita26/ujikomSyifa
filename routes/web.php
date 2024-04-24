@@ -37,9 +37,13 @@ Route::get('/photo-detail', function () {
     return view('photo-detail');
 });
 
-Route::get('/category', function () {
-    return view('category');
-});
+
+Route::get('/category', [GalerryController::class, 'show']);
+Route::get('/category/boba', [GalerryController::class, 'boba']);
+
+// Route::get('/category', function () {
+//     return view('category');
+// });
 
 
 Route::get('/dashboardAdmin', function () {

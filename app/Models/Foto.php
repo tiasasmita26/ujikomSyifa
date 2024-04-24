@@ -10,4 +10,8 @@ class Foto extends Model
     use HasFactory;
 
     protected $guarded = [];
+    public function album()
+    {
+        return $this->hasMany(Album::class, 'AlbumID', 'AlbumID');
+    }
 }

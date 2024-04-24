@@ -59,6 +59,10 @@ class AlbumController extends Controller
         return redirect('/albumAdmin')->with('success','Album baru telah ditambahkan!');
     }
 
+    public function album() {
+        return view('l');
+    }
+
     /**
      * Display the specified resource.
      *

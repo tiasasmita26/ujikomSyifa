@@ -65,16 +65,14 @@
 
 <div style="background-color: #d2bd96;">
     <div style="display: flex; margin-left: 50px; padding: 50px;"> 
-
      <div class="card" style="width: 20rem; text-align: center; border-radius: 15px;"> 
       <i class="fa-solid fa-martini-glass-citrus" style="font-size: 5rem; margin-top: 50px;"></i>
        <div class="card-body">
          <h5 class="card-title">BOBA & TEA</h5>
          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        
+        <a href="/category/boba" class="btn btn-primary">Lihat</a>
        </div>
      </div>
- 
      <div data-aos="fade-up" data-aos-duration="3000" class="card" style="width: 20rem; margin-left: 60px; text-align: center; border-radius: 15px;">
         <i class='bx bxs-coffee-bean' style="font-size: 5rem; margin-top: 50px;"></i>
        <div class="card-body">
