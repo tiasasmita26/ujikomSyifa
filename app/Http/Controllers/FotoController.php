@@ -100,13 +100,15 @@ class FotoController extends Controller
      * @param  \App\Models\Foto  $foto
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($FotoID)
     {
         // $foto = Foto::find($id);
         // return view('editFoto', ['foto' => $foto]);
 
-        $foto = Foto::where('FotoID', $id)->get();
-        return view('editFoto', ['foto' => $foto]);
+        $album = Album::all();
+        $foto = Foto::where('FotoID',$FotoID)->first();
+
+        return view('admin.editFoto', compact(['foto', 'album']));
     }
 
     /**
@@ -116,9 +118,33 @@ class FotoController extends Controller
      * @param  \App\Models\Foto  $foto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $FotoID)
     {
-        //
+        // dd($request);
+        $photo = Foto::find($FotoID);
+        // Lakukan penanganan jika foto tidak ditemukan
+        if (!$photo) {
+            return redirect('dataFoto')->with('error', 'Foto tidak ditemukan');
+        }
+    
+        $photo->JudulFoto = $request->JudulFoto;
+        $photo->DeskripsiFoto = $request->DeskripsiFoto;
+        // Pastikan tanggal unggah tetap sama dengan yang sebelumnya
+        $photo->TanggalUnggah = $photo->TanggalUnggah;
+        $photo->AlbumID = $request->AlbumID;
+        $photo->UserID = $request->UserID;
+
+        if ($request->hasFile('file_location')) {
+            $files = $request->file('file_location');
+            $path = storage_path('app/public');
+            $files_name = 'public' . '/' . date('Ymd') . '-' .
+            $files->getClientOriginalName();
+            $files->storeAs('public', $files_name);
+            $photo->file_location = $files_name;
+        }
+        $photo->save();
+    
+        return redirect('dataFoto')->with('success', 'Foto berhasil diperbarui');   
     }
 
     /**
@@ -127,8 +153,9 @@ class FotoController extends Controller
      * @param  \App\Models\Foto  $foto
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($FotoID)
     {
-        //
+        Foto::where('FotoID', $FotoID)->delete();
+        return redirect('/dataFoto')->with('success', 'Data berhasil dihapus');
     }
 }

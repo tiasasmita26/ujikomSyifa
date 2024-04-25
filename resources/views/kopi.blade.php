@@ -64,8 +64,7 @@
                                     {{-- <small class="mr-3"><i class="fa fa-user text-primary">{{ $photo->user->full_name }}</i></small> --}}
                                     {{-- <small class="mr-3"><i class="fa fa-folder text-primary">{{ $photo->user->album_name }}</i></small> --}}
                                     <small class="mr-3"><i class="fa fa-comments text-primary">15</i></small>
-                                    {{-- <small id="like-icon-{{ $photo->FotoID }}" class="mr-3 like-icon" data-photo-id="{{ $photo->FotoID }}"><i class="fa fa-heart text-primary"></i></small> --}}
-                                    <small class="mr-3 like-icon"><a href="/photo-detail/{{$photo->FotoID}}/like"><i class="fa fa-heart text-primary">{{ $photo->like }}</i></a></small>
+                                    <small id="like-icon-{{ $photo->FotoID }}" class="mr-3 like-icon" data-photo-id="{{ $photo->FotoID }}"><i class="fa fa-heart text-primary"></i></small>
                                 </div>
                                 <p>{{ $photo->DeskripsiFoto }}</p>
                                 <a href="" class="btn btn-primary px-4 mx-auto my-2"> nkjhuyf</a>

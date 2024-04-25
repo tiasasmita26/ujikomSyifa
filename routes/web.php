@@ -4,6 +4,7 @@ use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\FotoController;
 use App\Http\Controllers\GalerryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LikeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,13 +34,12 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/', [GalerryController::class, 'index']);
 
-Route::get('/photo-detail', function () {
-    return view('photo-detail');
-});
+Route::get('/photo-detail/{FotoID}/like', [LikeController::class, 'like']);
 
 
 Route::get('/category', [GalerryController::class, 'show']);
 Route::get('/category/boba', [GalerryController::class, 'boba']);
+Route::get('/category/kopi', [GalerryController::class, 'kopi']);
 
 // Route::get('/category', function () {
 //     return view('category');
@@ -62,6 +62,10 @@ Route::get('/tambahFoto', function () {
 Route::get('/dataFoto', [FotoController::class, 'index']);
 Route::get('/tambahFoto', [FotoController::class, 'create'])->name('tambahFoto');  
 Route::post('/tambahFoto', [FotoController::class, 'store'])->name('simpann');   
+Route::get('/editFoto/{FotoID}', [FotoController::class, 'edit'])->name('editFoto');  
+Route::put('/updateFoto/{FotoID}', [FotoController::class, 'update']);  
+Route::get('/hapusFoto/{FotoID}', [FotoController::class, 'delete']);  
+ 
 
 
 Route::get('/albumAdmin', [AlbumController::class, 'index'])->name('albumDashboard');

@@ -24,4 +24,11 @@ class GalerryController extends Controller
         $photo = Foto::where('AlbumID', $album->AlbumID)->get();
         return view('boba', compact('photo'));
     }
+    public function kopi()
+    {
+        $nama = 'kopi';
+        $album = Album::where('NamaAlbum', $nama)->first();
+        $photo = Foto::where('AlbumID', $album->AlbumID)->get();
+        return view('kopi', compact('photo'));
+    }
 }

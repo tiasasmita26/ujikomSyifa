@@ -36,7 +36,8 @@
                     <td>{{ $data->UserID}}</td> 
                     <td>
                       {{-- <a href="{{ route('editFoto', $data->FotoId) }}"><button>Edit</button></a> --}}
-                      <a href=""><button>Hapus</button></a>
+                      <a href="/editFoto/{{ $data->FotoID }}"><button>edit</button></a>
+                      <a href="/hapusFoto/{{ $data->FotoID }}"><button>hapus</button></a>
                     </td>
                 </tr>
                   @endforeach
